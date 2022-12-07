@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- <link href="https://fonts.cdnfonts.com/css/crimson" rel="stylesheet"> -->
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Project: Responsive Redesign</title>
+
+</head>
+<body>
+    <nav>
+        <div class="nav-row mb-3">
+            <a class="link-logo" href="index.html"><h1>Jamie Chen</h1></a>
+            <div>
+                <a href="https://www.linkedin.com/in/angjchen/" target="_blank"><img class="icon" src="./assets/icon/linkedin.svg"></img></a>
+                <a href="mailto:ang_chen@brown.edu"><img class="icon" src="./assets/icon/email.svg"></img></a>
+                <a href="index.html" target="_blank"><img class="icon" src="./assets/icon/cv.svg"></img></a>
+            </div>
+            
+        </div>
+        <div class="nav-row">
+            <div class="nav-words pr-1">
+                <p class="nav-p">Aspiring software engineer, UI/UX apprentice.</p>
+                <p class="nav-p">I love building things with code & everything about visual computing!</p>    
+            </div>
+            <div class="nav-options">
+                <a href="index.html" style="color: #F25D5D"><span>projects</span></a>
+                <a href="about.html"><span>about</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="project-page">
+        <div class="side-bar">
+            <div class="title">Responsive Redesign</div>
+            <div class="tags">
+                UIUX  /  WebDev  /  HTML  /  CSS</p>
+            </div>
+            <div class="desc">Redesigning and developing responsive webpages 
+                for the Visualization Research Lab (VRL) at 
+                BrownU to improve website usability.</div>
+        </div>
+        <div class="main-text">
+            <h2>Redesigning VRL@Brown</h2>
+            <p>
+                [<a href="https://sexylemur666.github.io/responsive-redesign/"><em>Redesigned</em> page</a>]  
+                [<a href="http://vis.cs.brown.edu/">Original page</a>]
+            </p>
+            <img src="assets/img/redesign/showcase.png">
+            <p>In this project, I analyzed the website of the Brown University Visualization Research Lab (VRL) from the perspectives of usability, learnability, memorability, and accessibility. I then redesigned two web pages (Home page and Research page) that aim to address the identified issues.</p>
+            <p>The VRL site was chosen for this project because it's openly accessible and its purposes are clear:</p>
+            <ul>
+                <li>Introducing the lab to the audience</li>
+                <li>Showcasing past results from the lab</li>
+                <li>Providing readers with helpful information about the lab</li>
+            </ul>
+            <p>Having those targets in mind allowed me to efficiently identify usability problems and find appropriate ways to improve the webpage.</p>
+        
+            
+            <h2>I. Usability Problems</h2>
+            <p>Below is a summary of the identified problems of the original web page, grouped by their nature as being related to usability, learnability, or memorability (click on the problem statements or solutions to see screenshots).</p>
+            <figure><table><thead><tr><th><span>Problem</span></th><th><span>Solution</span></th></tr></thead><tbody><tr><td><a href="./assets/img/redesign/problems/hover.png"><span class="hover-pink" style="color:orange"><span class="hover-pink">Secondary titles like "Publications" are hidden until the user hovers the mouse over the panel buttons.&nbsp;(Plus, mouse hovering is hard for mobile users and&nbsp;impossible for keyboard users to perform, making the subsections inaccessible.) ➔</span></span></a></td><td><a href="./assets/img/redesign/problems/hover-sol.png"><span class="hover-pink">Ditch the drop-down menu and put secondary titles in the subsection. ➔</span></a></td></tr><tr><td><span style="color:orange"><span>When user tries to click a secondary title, it is very easy to accidentally hover over buttons next to it due to a lack of visual cues.</span></span></td><td><a href="./assets/img/redesign/problems/hover-sol.png"><span class="hover-pink">Ditch the drop-down menu and put secondary titles in the subsection. ➔</span></a></td></tr><tr><td><a href="./assets/img/redesign/problems/areas.png"><span class="hover-pink" style="color:orange"><span class="hover-pink">The "areas" section is a long-winded list that lacks readability.&nbsp;➔</span></span></a></td><td><a href="./assets/img/redesign/problems/areas-sol.png"><span class="hover-pink">Flatten the "Area" section. List research themes as click-to-view-detail cards on home page. ➔</span></a></td></tr><tr><td><a href="./assets/img/redesign/problems/afford.png"><span class="hover-pink" style="color:green"><span class="hover-pink">Header buttons suffer poor affordance: they look like still images that are unclikable. ➔</span></span></a></td><td><a href="./assets/img/redesign/problems/afford-sol.png"><span class="hover-pink">Redesign the buttons and header layout. ➔</span></a></td></tr><tr><td><a href="./assets/img/redesign/problems/deep.png"><span class="hover-pink" style="color:green"><span class="hover-pink">Useful information is buried too deeply within the website hierarchy. ➔</span></span></a></td><td><a href="./assets/img/redesign/problems/aside.png"><span class="hover-pink">Place useful lab information on the side of the home page. ➔</span></a></td></tr><tr><td><a href="./assets/img/redesign/problems/p12.png"><span class="hover-pink" style="color:purple"><span class="hover-pink">Implications of multiple secondary “Home” titles are ambiguous (Users might mistake them as the home page of the website when they're not) and inconsistent across sections (e.g. "Home" of "areas" is a summary of research areas, whereas "Home" of "results" is just "Publications"). ➔</span></span></a></td><td><a href="./assets/img/redesign/problems/struct.png"><span class="hover-pink">Ditch all "Home" secondary titles. Redesign the section structures.➔</span></a></td></tr><tr><td><span>*The </span><a href="https://wave.webaim.org/report#/http://vis.cs.brown.edu/"><span class="hover-pink">WAVE</span></a><span> web accessibility evaluation tool reported errors of missing </span><code>lang</code><span> attribute that allows facilities like automatic translation to work. Another crucial problem is that the navigation bar only shows the subsection menu </span><code>onmouseover</code><span> but not </span><code>onfocus</code><span>, making the functionalities inaccessible to keyboard users. This issue and its solution has been discussed in Problem 1 above.</span></td><td>&nbsp;</td></tr></tbody></table></figure>
+            
+            <h2>II. Visual Redesign</h2>
+            <h3>Wireframing</h3>
+            <img src="assets/img/redesign/lofi-annotated.jpg">
+            <h3>Prototyping</h3>
+            <img src="assets/img/redesign/style.png">
+            <img src="assets/img/redesign/hifi-annotated.png">
+            <h2>III. Responsiveness Demo</h2>
+            <video controls="" src="./assets/img/redesign/responsive-home.mov"></video>
+            <video controls="" src="./assets/img/redesign/responsive-research.mov"></video>
+
+        </div>
+    </main>
+
+    <footer>
+        Made with 🍦 by Jamie Chen, 2022.
+    </footer>
+            
+
+</body>
+</html>

@@ -1,9 +1,30 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    background-color: #f3f3f3;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #4f4f4f;
+    pointer-events: none;
+    padding-bottom: 2rem;
 }
 
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+
     padding: 2rem;
+    background-color: #fff;
+}
+
+main {
+    padding-top: 8.5rem;  /* nav height */
 }
 
 h1 {
@@ -11,6 +32,15 @@ h1 {
     line-height: 1.4rem;
     margin: 0;
     font-weight: 600;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4f4f4f;
 }
 
 .pr-1 {
@@ -46,12 +76,11 @@ img.icon {
     aspect-ratio: 1;
 }
 
-main {
-    /* width: 70%;
-    max-width: 1280px;
-    margin: auto; */
+.centered-div {
+    padding-top: 3rem;
+    width: min(85%, 70rem);
+    margin-inline: auto;
 }
-
 
 
 .grid-col-span2 {
@@ -62,29 +91,170 @@ main {
     grid-row: span 2;
 }
 
-img.project-item {
-    border-radius: 1rem;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .projects-grid {
     display: grid;
     gap: min(2%, 1.5rem);
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
 
-    padding-block: 2rem;
+    /* overflow: scroll; */
+
+
+    /* padding-block: 2rem; */
+    /* padding-top: 3rem;
     width: min(85%, 70rem);
-    margin-inline: auto;
+    margin-inline: auto; */
 }
 
+
 .project-item {
-    font-size: var(--fs-400);
+    position: relative;
+    font-size: 1rem;
     border-color: black;
     border-radius: 1rem;
     /* box-shadow: 2px 2px 2px 2px; */
     /* aspect-ratio : 1 / 1; */
     /* width: 40%; */
+    overflow: hidden;
+}
+
+.project-item .text {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    pointer-events: none;
+    z-index: 4;
+    transition: 0.35s ease-in-out;
+}
+
+.project-item .text h2 {
+    margin: 0;
+    font-weight: 600;
+    margin-bottom: .25rem;
+}
+
+.project-item .text .tags {
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    .project-item .text .desc {
+        display: none;
+    }
+
+    .project-item .text .tags {
+        font-weight: 400;
+    }
+}
+
+.project-item:hover .text {
+    opacity: 1;
+}
+
+.project-item img {
+    border-radius: 1rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    cursor: pointer;
+    transition: 0.35s ease-in-out;
+}
+
+.project-item:hover img {
+    transform: scale(1.25);
+    filter: brightness(.3) blur(2px)
+}
+
+
+
+
+/* About */
+.aboutme {
+    font-family: 'Crimson', sans-serif;
+}
+.aboutme h2 {
+    font-weight: 600;
+    font-style: italic;
+}
+
+.aboutme h3 {
+    font-weight: 600;
+    font-style: italic;
+}
+
+
+/* Project page */
+.project-page {
+    display: flex;
+    margin-top: 4rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.project-page .side-bar {
+    min-width: 10rem;
+    max-width: 10rem;
+}
+
+.project-page .main-text{
+    padding-left: 4rem;
+    /* min-width: 50rem; */
+    max-width: 50rem;
+}
+
+.project-page .main-text img {
+    width: 100%;
+    display: block;
+    border-radius: 1rem;
+}
+
+.project-page .main-text video {
+    width: 100%;
+}
+
+.project-page .main-text figure {
+    overflow-x: auto;
+    margin: 1.2em 0px;
+    max-width: calc(100% + 16px);
+    padding: 0px;
+}
+
+.project-page .main-text tr {
+    break-inside: avoid;
+    break-after: auto;
+}
+
+.project-page .main-text td {
+    padding: 12px;
+    line-height: 1.2;
+    vertical-align: top;
+    border-top: 1px solid #333;
+}
+
+.project-page .main-text th {
+    padding: 12px;
+    line-height: 1.2;
+    vertical-align: top;
+}
+
+.project-page span.hover-pink:hover {
+    /* color: #ee9d9d !important; */
+    color: #F25D5D !important;
+}
+
+.project-page a {
+    color: #0d6efd;
+    /* color: #F25D5D; */
+}
+
+.project-page a:hover {
+    /* color: #ee9d9d; */
+    color: #F25D5D;
+    /* color: #6610f2; */
 }
