@@ -249,16 +249,8 @@ img.icon {
         transform: none !important;
     }
     .project-item .text {
-        /* display: flex; */
-        /* justify-content: space-between; */
-        /* align-items: baseline; */
         width: 100%;
-
         opacity: 1;
-
-        /* background-image: black; */
-        /* top: 1.5rem;
-        left: 1.5rem; */
         top: 0;
         left: 0;
         padding: 1.5rem;
@@ -266,6 +258,12 @@ img.icon {
         transform: none;
         color: #000;
         z-index: 1;
+
+        /* disable transition on load */
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -o-transition: none !important;
+        transition: none !important;
     }
 
     .project-item .text h2 {
@@ -280,9 +278,6 @@ img.icon {
 
     }
 
-    /* .project-item#redesign .cover { 
-        background: linear-gradient(to bottom, #b9e1ff 6%, rgba(25, 154, 253, 0) 40%);
-    } */
     .project-item#redesign .text { 
         background: -moz-linear-gradient(top, rgba(185,225,255,1) 15%, rgba(185,225,255,0) 100%); /* FF3.6-15 */
         background: -webkit-linear-gradient(top, rgba(185,225,255,1) 15%,rgba(185,225,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -292,20 +287,24 @@ img.icon {
     }
 
     .project-item#iterative .text { 
+        
+        background: -moz-linear-gradient(top, rgb(241, 235, 212) 15%, rgba(241, 235, 212, 0) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgb(241, 235, 212) 15%,rgba(241, 235, 212, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgb(241, 235, 212)15%,rgba(241, 235, 212, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */        
+
         color: rgb(192, 77, 0);
     }
     .project-item#clouds .text { 
+        background: -moz-linear-gradient(top, rgb(0, 0, 0) 15%, rgba(0, 0, 0, 0) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgb(0, 0, 0) 15%,rgba(0, 0, 0, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgb(0, 0, 0)15%,rgba(0, 0, 0, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */        
+
         color: rgb(255, 255, 255);
     }
-    /* .project-item#personas .cover { 
-        background: linear-gradient(to bottom, #ffffff 6%, rgba(255, 255, 255, 0) 40%);
-    } */
     .project-item#personas .text { 
         background: -moz-linear-gradient(top, rgb(255, 255, 255) 15%, rgba(255, 255, 255, 0) 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(top, rgba(185,225,255,1) 15%,rgba(255, 255, 255, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: -webkit-linear-gradient(top, rgb(255, 255, 255) 15%,rgba(255, 255, 255, 0) 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(to bottom, rgb(255, 255, 255)15%,rgba(255, 255, 255, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */        
-
-        /* color: rgb(13, 34, 153); */
     }
 
     
