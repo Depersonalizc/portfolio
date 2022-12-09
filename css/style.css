@@ -8,10 +8,10 @@ html {
     padding: 0;
 }
 
-ul, ol {
+/* ul, ol {
   list-style: none;
   padding: 0;
-}
+} */
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
@@ -25,7 +25,6 @@ footer {
     color: #4f4f4f;
     pointer-events: none;
     padding-bottom: 2rem;
-    /* clear:both; */
 }
 
 nav {
@@ -110,8 +109,8 @@ p.nav-p {
 img.icon {
     display: inline-block;
     width: 1.5rem;
-    /* margin-left: .5rem; */
     aspect-ratio: 1;
+    border-radius: .3em;
 }
 
 .centered-div {
@@ -131,7 +130,6 @@ img.icon {
 }
 
 
-
 /* Home */
 .grid-col-span2 {
     grid-column: span 2;
@@ -143,33 +141,18 @@ img.icon {
 
 .projects-grid {
     display: grid;
-    /* gap: min(3%, 3rem); */
     gap: 2vw;
-    /* gap: min(2vw, 3rem); */
-    /* gap: 3rem; */
-    /* gap: min(4vh, 3rem); */
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
-
     overflow:hidden;
-
-    /* overflow: scroll; */
-    /* padding-block: 2rem; */
-    /* padding-top: 3rem;
-    width: min(85%, 70rem);
-    margin-inline: auto; */
 }
 
 
 .project-item {
-    /* background-color: red; */
     position: relative;
     font-size: 1rem;
     border-color: black;
     border-radius: 1rem;
-    /* box-shadow: 2px 2px 2px 2px; */
-    /* aspect-ratio : 1 / 1; */
-    /* width: 40%; */
     overflow: hidden;
 }
 
@@ -217,31 +200,16 @@ img.icon {
         gap: 3rem;
     }
 
-    .project-item {        
-        /* border-style: solid; */
-
+    .project-item {
         grid-column: span 4;
         grid-row: span 1;
         height: 25rem;
-        /* border-radius: 0 0 1rem 1rem; */
-        /* border-radius: 0; */
-        /* padding-bottom: 8rem; */
     }
 
     .project-item img {
-        position:relative;
-        z-index:-1;
-        display:block;
-
-        /* mask-image: linear-gradient(to bottom, rgba(255, 97, 97, 0) 0%,rgba(0,0,0,0.65) 100%);    } */
-
-        /* display: block;
-        z-index: 4;
-        position: relative; */
-        /* z-index: -1; */
-        /* padding-bottom: 8rem; */
-        /* display: block; */
-        /* border-radius: 1rem 1rem 0 0; */
+        position: relative;
+        z-index: -1;
+        display: block;
     }
 
     .project-item:hover img {
@@ -282,35 +250,28 @@ img.icon {
         background: -moz-linear-gradient(top, rgba(185,225,255,1) 15%, rgba(185,225,255,0) 100%); /* FF3.6-15 */
         background: -webkit-linear-gradient(top, rgba(185,225,255,1) 15%,rgba(185,225,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(to bottom, rgba(185,225,255,1) 15%,rgba(185,225,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */        
-        
         color: rgb(13, 34, 153);
     }
 
-    .project-item#iterative .text { 
-        
+    .project-item#iterative .text {
         background: -moz-linear-gradient(top, rgb(241, 235, 212) 15%, rgba(241, 235, 212, 0) 100%); /* FF3.6-15 */
         background: -webkit-linear-gradient(top, rgb(241, 235, 212) 15%,rgba(241, 235, 212, 0) 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(to bottom, rgb(241, 235, 212)15%,rgba(241, 235, 212, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */        
-
         color: rgb(192, 77, 0);
     }
     .project-item#clouds .text { 
         background: -moz-linear-gradient(top, rgb(0, 0, 0) 15%, rgba(0, 0, 0, 0) 100%); /* FF3.6-15 */
         background: -webkit-linear-gradient(top, rgb(0, 0, 0) 15%,rgba(0, 0, 0, 0) 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(to bottom, rgb(0, 0, 0)15%,rgba(0, 0, 0, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */        
-
         color: rgb(255, 255, 255);
     }
     .project-item#personas .text { 
         background: -moz-linear-gradient(top, rgb(255, 255, 255) 15%, rgba(255, 255, 255, 0) 100%); /* FF3.6-15 */
         background: -webkit-linear-gradient(top, rgb(255, 255, 255) 15%,rgba(255, 255, 255, 0) 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(to bottom, rgb(255, 255, 255)15%,rgba(255, 255, 255, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */        
+        color: rgb(0, 0, 0);
     }
 
-    
-    /* .project-item .cover {
-        background: linear-gradient(to bottom, rgb(255, 255, 255) 10%, rgba(255, 255, 255, 0) 40%);
-    } */
 
 }
 
@@ -340,7 +301,6 @@ img.icon {
 
 
 
-
 /* About */
 .aboutme {
     font-family: 'Crimson', sans-serif;
@@ -353,6 +313,56 @@ img.icon {
 .aboutme h3 {
     font-weight: 600;
     font-style: italic;
+}
+
+.about-portrait {
+    position: relative;
+    border-radius: 1rem;
+    width: 80rem;
+    z-index: 0;
+}
+
+
+.portrait-img {
+    display:block; 
+    width:100%; 
+    height:auto; 
+    border-radius: 1rem;
+}
+
+.about-portrait:hover::before {
+    opacity: 1;
+}
+
+.about-portrait::before {
+    background: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(13px);
+    width: 100%;
+    height: 100%;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: .5em;
+}
+
+.about-portrait::after {
+	z-index: -1;
+	content: '';
+	position: absolute;
+	background-color: inherit;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	border-radius: 7px;
 }
 
 
@@ -368,7 +378,6 @@ img.icon {
     min-width: 13rem;
     max-width: 13rem;
     padding-right: 2rem;
-    /* color: #838383; */
 
     position: fixed;
 }
@@ -401,10 +410,7 @@ img.icon {
 }
 
 
-
 .side-bar .title {
-    /* font-family: 'Crimson', sans-serif; */
-    /* display: none; */
     font-weight: 600;
     font-size: 1.5rem;
     line-height: 1.5rem;
@@ -413,16 +419,9 @@ img.icon {
 
 .project-page .tags {
     padding-top: .5rem;
-    /* padding-bottom: 1rem; */
-
-    /* font-weight: 600; */
-    /* font-style: italic; */
-    /* color: #9d9d9d; */
     font-size: 0.85rem;
     line-height: 1rem;
-
     max-width: 80%;
-    /* display: none; */
 }
 
 .project-page .desc {
@@ -448,9 +447,8 @@ img.icon {
 }
 
 .project-page .main-text h3 {
-    /* font-style: italic; */
     color: #9d9d9d;
-    transition: 0.2s ease-out !important;
+    transition: 0.2s ease-out;
 
     font-weight: 600;
     font-size: 1rem;
@@ -520,17 +518,13 @@ img.icon {
 }
 
 .project-page span.hover-pink:hover {
-    /* color: #ee9d9d !important; */
     color: #F25D5D !important;
 }
 
 .project-page a {
     color: #0d6efd;
-    /* color: #F25D5D; */
 }
 
 .project-page a:hover {
-    /* color: #ee9d9d; */
     color: #F25D5D;
-    /* color: #6610f2; */
 }
