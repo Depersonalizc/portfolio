@@ -20,7 +20,7 @@ body {
 
 footer {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 3rem;
     font-size: 0.85rem;
     color: #4f4f4f;
     pointer-events: none;
@@ -406,7 +406,8 @@ img.icon {
         margin-left: 0 !important;
         padding-left: 0 !important;
         max-width: 100% !important;
-    }    
+    }
+        
 }
 
 
@@ -462,7 +463,7 @@ img.icon {
     color: #6e6e6e;
 }
 
-.project-page .main-text img {
+.main-text img {
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
@@ -528,3 +529,35 @@ img.icon {
 .project-page a:hover {
     color: #F25D5D;
 }
+
+.project-link {
+    display: inline-flex;
+    column-gap: .3rem;
+    row-gap: .3rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
+.figma-link::before {
+    content: "";
+    background: url('../assets/icon/figma.svg');
+    width: 1rem;
+    height:1rem;
+    background-size: 1rem 1rem;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .gallery-col2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+        place-items: center;
+    }
+
+    .gallery-col2 > img {
+        margin: 0;
+    }
+}
+
+
