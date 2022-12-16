@@ -498,6 +498,10 @@ img.icon {
     margin-bottom: 2rem;
 }
 
+.main-text iframe {
+    margin-top: 2rem;
+}
+
 .main-text ul {
     margin-block: 1rem;
 }
@@ -513,7 +517,8 @@ img.icon {
 }
 
 
-.project-page .main-text img {
+.project-page .main-text img,
+.project-page .main-text iframe {
     width: 100%;
     display: block;
     border-radius: var(--br-sm);
@@ -544,7 +549,6 @@ img.icon {
 
 .project-page .main-text th {
     padding: 12px;
-    /* line-height: 1.2; */
     vertical-align: top;
 }
 
@@ -555,6 +559,28 @@ img.icon {
 .project-page span.hover-pink:hover {
     color: #F25D5D !important;
 }
+
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #9d9d9d;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    padding-inline: 1em;
+}
+
+blockquote > p {
+    margin-top: 2rem;
+}
+
+/* blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+} */
+  
 
 .project-page a {
     color: #0d6efd;
