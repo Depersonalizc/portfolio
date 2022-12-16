@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Volumetric Clouds</title>
+
+</head>
+<body>
+    <nav>
+        <div class="nav-row mb-3">
+            <h1><a class="link-logo" href="index.html">Jamie Chen</a></h1>
+            <div class="nav-contact">
+                <a href="https://github.com/Depersonalizc/" target="_blank"><div><img class="icon" src="./assets/icon/github.svg"></div></a>
+                <a href="https://www.linkedin.com/in/angjchen/" target="_blank"><div><img class="icon" src="./assets/icon/linkedin.svg"></div></a>
+                <a href="mailto:ang_chen@brown.edu"><div><img class="icon" src="./assets/icon/email.svg"></div></a>
+                <a href="index.html" target="_blank"><div><img class="icon" src="./assets/icon/cv.svg"></div></a>
+            </div>
+            
+        </div>
+        <div class="nav-row">
+            <div class="nav-words pr-1">
+                <p class="nav-p">Aspiring software engineer, UI/UX apprentice.</p>
+                <p class="nav-p">I love building stuff with code & all things visual computing!</p>    
+            </div>
+            <div class="nav-options">
+                <a href="index.html" style="color: #F25D5D"><span>projects</span></a>
+                <a href="about.html"><span>about</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="project-page" id="project">
+        <div class="side-bar">
+            <a class="mono-link" href="#project"><div class="title">Volumetric Clouds</div></a>
+            <div class="tags">
+                Graphics  /  OpenGL  /  C++
+            </div>
+            <div class="desc">Building a real-time volumetric clouds renderer with OpenGL.</div>
+        </div>
+        <div class="main-text">
+            <div class="hidden-sm">
+                <a class="mono-link" href="#project"><h2 class="m-0">Volumetric Clouds</h2></a>
+                <div class="tags" style="width: 100%;">
+                    Graphics  /  OpenGL  /  C++
+                </div>
+                <div class="desc">Building a real-time volumetric clouds renderer with OpenGL.</div>
+                </div>
+            <video class="showcase-img" controls=""
+            src="assets/img/clouds/showcase.mov"></video>
+
+            <p>
+                <a href="https://github.com/Depersonalizc/volumetric-clouds" target="_blank" class="project-link github-link">
+                    <strong>Github</strong>
+                </a>
+              </p>
+
+            <p>
+                I ❤️ clouds. That's why I built a real-time volumetric clouds renderer with my CS1230 teammates, based on 
+                <a href="http://killzone.dl.playstation.net/killzone/horizonzerodawn/presentations/Siggraph15_Schneider_Real-Time_Volumetric_Cloudscapes_of_Horizon_Zero_Dawn.pdf">
+                this</a> presentation at SIGGRAPH 2015. The renderer we developed with OpenGL and C++ supports intricate cloud <a href="#shape">shapes 
+                generation</a>, realistic <a href="#lighting"> lighting effects</a>, and a physically-based <a href="#sky">sky</a> that varies throughout the day.
+            </p>
+        
+            
+            <a class="mono-link" href="#shape"><h2 id="shape">I. Shape</h2></a>
+            <p><a href="https://en.wikipedia.org/wiki/Worley_noise">Worley noise</a> is a type of cellular noise where the value of each point 
+                in space is determined by its distance to the closest neighbor in a set of random feature points. It is great for 
+                modeling the density of clouds because when inverted, it tends to produce those nice bobbly patterns that resemble clouds.
+            </p>
+            <div class="img-hover-pair">
+                <img src="./assets/img/clouds/worley.png"></img>
+                <img src="./assets/img/clouds/worley_inverted.png"></img>
+            </div>
+            <a class="mono-link" href="#optimizations"><h3 id="optimizations">Optimization</h3></a>
+            <p>
+                The first optimization we make of the above process is to take stratified samples of feature points in regular grid cells (let's call them
+                grid points) instead of uniformly in space. 
+                This reduces the quadratic number of candidate neighbors dramatically to 27 (constant!) in 3D since we can easily find the cell
+                any point belongs. Here is an illustration for the 2D case as they're easier to draw.
+            </p>
+            <img src="./assets/img/clouds/stratified.jpg"></img>
+            <p>
+                For even greater efficiency, we send the grid points to a compute shader, which calculates a 
+                3D noise map with hundreds of GPU cores. Long live parallelism!
+            </p>
+            <a class="mono-link" href="#fractal-noise"><h3 id="fractal-noise">Fractal Noise</h3></a>
+            <p>
+                To create sufficient details for our clouds, we generate two sets of 3D Worley noise: a high resolution (200x200x200) one
+                that controls the overall shape of the clouds, and a second lower resolution (64x64x64) one that adds details to the base
+                shape by eroding lower-density regions of the shape texture. Each texture map has 4 channels of 3-layer Worley noise of 
+                increasing frequency. This overlaying process generates <a href="https://thebookofshaders.com/13/">fractal-like</a> noise 
+                textures that add great details to our clouds. Below are slices of the four channels of our high resolution shape texture.
+            </p>
+            <div class="grid-2x2">
+                <img src="./assets/img/clouds/r2.png" alt="Worley noise channel R">
+                <img src="./assets/img/clouds/g2.png" alt="Worley noise channel G">
+                <img src="./assets/img/clouds/b2.png" alt="Worley noise channel B">
+                <img src="./assets/img/clouds/a2.png" alt="Worley noise channel A">
+            </div>
+  
+            <a class="mono-link" href="#tileable"><h3 id="tileable">Making it Tileable</h3></a>
+            <p>
+                One final pitfall of our previous scheme is that textures created that way are not tileable: visible seams occur when we place two copies of a
+                texture next to each other. Luckily, there's a simple trick to fix that: wrap the grid points around the unit cube. This makes
+                the grid points periodic and thus makes the noise texture tileable as well.
+            </p>
+    
+            
+            <a class="mono-link" href="#lighting"><h2 id="lighting">II. Lighting</h2></a>
+            There are three key ingredients when it comes to realistic lighting for the clouds:
+            <ul>
+                <li>Exponential decay of light energy</li>
+                <li>Anistropic scattering (silver lining)</li>
+                <li>Dark edges on clouds</li>
+            </ul>
+            <a class="mono-link" href="#observations"><h3 id="observations">Observations</h3></a>
+            <ul>
+                <li>All Users are able to quickly find the entry point (start button) of the interface.</li>
+                <li>Most users hesitate about what do to next after customizing their drink on the Customization 
+                    & Confirm page. Some toggle back and forth between the Menu and the Customization & Confirm page.</li>
+                <li>Users seem unprepared when the machine suddenly pops out the cup and holds it in the air.</li>
+                <li>Some users try to click on elements of the interface that are not interactive.</li>
+            </ul>
+
+            <a class="mono-link" href="#interview"><h3 id="interview">interview</h3></a>
+            <ul>
+                <li>Most users interviewed are using the coffee vending machine for the first time and aren't familiar 
+                    with the purchasing process.</li>
+                <li>Most users aren't sure what to expect with the coffee cup, regardless of their past experience. 
+                    One user who had experience with a similar machine finds it surprising that the machine holds the 
+                    cup in the air while filling it; another user with no previous experience doesn't know 
+                    a cup will be provided.</li>
+                <li>Some users find the logic of the checkout process to be counterintuitive; They expect a "Confirm" 
+                    button before paying for the drink rather than the other way around.</li>
+                <li>Some users find it cumbersome to order multiple items as separate orders, wishing a shopping cart 
+                    functionality could be added that allows them to order everything in one go.</li>
+                <li>Some users find the graphic illustration on the payment panel to be helpful.</li>
+            </ul>
+
+            <a class="mono-link" href="#sky"><h2 id="sky">III. Sky</h2></a>
+            Under construction.
+        </div>
+    </main>
+
+    <footer>
+        Made with 🍦 by Jamie Chen © 2022.
+    </footer>
+            
+
+</body>
+</html>

@@ -13,9 +13,15 @@ html {
   padding: 0;
 } */
 
+:root {
+    --br-lg: 1rem;
+    --br-sm: 0.5rem;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
     background-color: #f8f8f8;
+    min-width: 300px;
 }
 
 footer {
@@ -62,8 +68,6 @@ a:hover {
 
 a.mono-link {
     color: black !important;
-    text-decoration: none !important;
-    transition: 0.2s ease-out !important;
 }
 
 a.mono-link:hover {
@@ -83,9 +87,10 @@ a.mono-link:hover {
 
 .nav-contact {
     display: flex;
-    justify-content: end;
+    align-items: end;
     column-gap: .5rem;
-    margin-bottom: .2rem;
+    /* margin-bottom: .1rem; */
+    height: 1.5rem;
 }
 
 .nav-options {
@@ -107,14 +112,15 @@ p.nav-p {
 }
 
 img.icon {
-    display: inline-block;
-    width: 1.5rem;
+    display: block;
+    /* height: 100%; */
+    height: 1.5rem;
     aspect-ratio: 1;
     border-radius: .3em;
 }
 
 .centered-div {
-    padding-top: 3rem;
+    padding-top: min(15vw, 3rem);
     width: min(85%, 70rem);
     margin-inline: auto;
 }
@@ -141,42 +147,34 @@ img.icon {
 
 .projects-grid {
     display: grid;
-    gap: 2vw;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    gap: min(15vw, 3rem);
     overflow:hidden;
 }
-
 
 .project-item {
     position: relative;
     font-size: 1rem;
     border-color: black;
-    border-radius: 1rem;
+    border-radius: var(--br-lg);
     overflow: hidden;
 }
 
-.project-item .text {
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    pointer-events: none;
-    transition: 0.35s ease-in-out;
-}
+@media only screen and (min-width: 800px) {
+    .projects-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 
-.project-item .text h2 {
-    margin: 0;
-    font-weight: 600;
-    margin-bottom: .25rem;
-}
+    .project-item .text {
+        opacity: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-.project-item .text .tags {
-    font-style: italic;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
+    .tags {
+        font-weight: 600;
+    }
+    
 }
 
 @media only screen and (max-width: 1024px) {
@@ -188,44 +186,43 @@ img.icon {
         display: none;
     }
 
-    .project-item .text .tags {
+    .project-item .tags {
         font-size: .8rem;
-        font-weight: 400;
+        font-weight: normal;
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
 
     .projects-grid {
-        gap: 3rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, max(85vw, 255px));  /* 300px * 85% */
     }
 
     .project-item {
-        grid-column: span 4;
+        grid-column: span 1;
         grid-row: span 1;
-        height: 25rem;
+        height: 100%;
     }
 
-    .project-item img {
+    .project-item img,
+    .project-item video {
         position: relative;
         z-index: -1;
         display: block;
     }
 
-    .project-item:hover img {
+    .project-item:hover img,
+    .project-item:hover video {
         filter: none !important;
         transform: none !important;
     }
     .project-item .text {
         width: 100%;
-        opacity: 1;
         top: 0;
         left: 0;
         padding: 1.5rem;
-        padding-bottom: 5rem;
-        transform: none;
-        color: #000;
-        z-index: 1;
+        padding-bottom: 5rem;  /* keep this to make gradient work! */
 
         /* disable transition on load */
         -webkit-transition: none !important;
@@ -238,12 +235,12 @@ img.icon {
         font-size: 1.2rem;
         margin: 0;
         padding-right: 1rem;
+        /* font-weight: normal; */
     }
 
-    .project-item .text .tags {
+    .project-item .tags {
         margin: 0;
         font-size: .7rem;
-
     }
 
     .project-item#redesign .text { 
@@ -275,8 +272,21 @@ img.icon {
 
 }
 
-.project-item:hover .text {
-    opacity: 1;
+.project-item .text {
+    position: absolute;
+    color: #fff;
+    pointer-events: none;
+}
+
+.project-item .text h2 {
+    margin: 0;
+    font-weight: 600;
+    margin-bottom: .25rem;
+}
+
+.project-item .text .tags {
+    font-style: italic;
+    margin-bottom: 1.25rem;
 }
 
 .project-item .cover {
@@ -284,19 +294,39 @@ img.icon {
     height: 100%;
 }
 
-.project-item img {
-    border-radius: 1rem;
+.project-item img,
+.project-item video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: 50% 50%;
     cursor: pointer;
-    transition: 0.35s ease-in-out;
+    transition: transform 0.3s ease-out,
+                filter 0.3s ease-out;
 }
 
-.project-item:hover img {
-    transform: scale(1.25);
-    filter: brightness(.3) blur(2px)
+.project-item:hover img,
+.project-item:focus-within img,
+.project-item:hover video,
+.project-item:focus-within video {
+    -moz-transform:scale(1.25);
+    -webkit-transform:scale(1.25);
+    -o-transform:scale(1.25);
+    -ms-transform:scale(1.25);
+    transform:scale(1.25);
+
+    -webkit-filter: brightness(.3) blur(2px);
+    -moz-filter: brightness(.3) blur(2px);
+    -o-filter: brightness(.3) blur(2px);
+    -ms-filter: brightness(.3) blur(2px);
+    filter: brightness(.3) blur(2px);
+}
+
+
+.project-item:hover .text,
+.project-item:focus-within .text {
+    transition: opacity 0.25s ease-in-out;
+    opacity: 1;
 }
 
 
@@ -317,7 +347,7 @@ img.icon {
 
 .about-portrait {
     position: relative;
-    border-radius: 1rem;
+    border-radius: var(--br-lg);
     width: 80rem;
     z-index: 0;
 }
@@ -326,8 +356,8 @@ img.icon {
 .portrait-img {
     display:block; 
     width:100%; 
-    height:auto; 
-    border-radius: 1rem;
+    height:auto;
+    border-radius: var(--br-lg);
 }
 
 .about-portrait:hover::before {
@@ -444,7 +474,7 @@ img.icon {
     line-height: 1.5rem;
 
     margin-top: 5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .project-page .main-text h3 {
@@ -464,8 +494,12 @@ img.icon {
 }
 
 .main-text img {
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
+}
+
+.main-text ul {
+    margin-block: 1rem;
 }
 
 .project-page img.showcase-img {
@@ -475,14 +509,14 @@ img.icon {
 
 .project-page .main-text video {
     margin-bottom: 2rem;
-    border-radius: 1rem;
+    border-radius: var(--br-sm);
 }
 
 
 .project-page .main-text img {
     width: 100%;
     display: block;
-    border-radius: 1rem;
+    border-radius: var(--br-sm);
 }
 
 .project-page .main-text video {
@@ -535,7 +569,7 @@ img.icon {
     column-gap: .3rem;
     row-gap: .3rem;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: center;
 }
 
 .figma-link::before {
@@ -546,8 +580,38 @@ img.icon {
     background-size: 1rem 1rem;
 }
 
+.github-link::before {
+    content: "";
+    background: url('../assets/icon/github_circ.svg');
+    width: 1rem;
+    height:1rem;
+    background-size: 1rem 1rem;
+}
 
-@media only screen and (min-width: 768px) {
+.img-hover-pair:hover > img:last-child {
+    display: block;
+}
+.img-hover-pair:hover > img:first-child {
+    display: none;
+}
+.img-hover-pair > img:last-child {
+    display: none;
+}
+
+.grid-2x2 {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: min(5vw, 2rem);
+    margin-block: 2rem;
+}
+
+.grid-2x2 > img {
+    margin: 0;
+}
+
+
+@media only screen and (min-width: 800px) {
     .gallery-col2 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
