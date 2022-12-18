@@ -74,6 +74,10 @@ a.mono-link:hover {
     color: #4f4f4f !important;
 }
 
+.mix-multiply {
+    mix-blend-mode: multiply;
+}
+
 
 .pr-1 {
     padding-right: 0.5rem;
@@ -171,7 +175,8 @@ img.icon {
         transform: translate(-50%, -50%);
     }
 
-    .tags {
+    .project-item .tags {
+        margin-bottom: 1.25rem;
         font-weight: 600;
     }
     
@@ -221,8 +226,9 @@ img.icon {
         width: 100%;
         top: 0;
         left: 0;
-        padding: 1.5rem;
-        padding-bottom: 5rem;  /* keep this to make gradient work! */
+        padding-top: 1.0rem;
+        padding-left: 1.5rem;
+        padding-bottom: 6rem;  /* keep this to make gradient work! */
 
         /* disable transition on load */
         -webkit-transition: none !important;
@@ -284,9 +290,8 @@ img.icon {
     margin-bottom: .25rem;
 }
 
-.project-item .text .tags {
+.project-item .tags {
     font-style: italic;
-    margin-bottom: 1.25rem;
 }
 
 .project-item .cover {
@@ -303,6 +308,7 @@ img.icon {
     cursor: pointer;
     transition: transform 0.3s ease-out,
                 filter 0.3s ease-out;
+    border-radius: var(--br-lg);
 }
 
 .project-item:hover img,
@@ -451,6 +457,7 @@ img.icon {
 .project-page .tags {
     padding-top: .5rem;
     font-size: 0.85rem;
+    font-weight: normal;
     line-height: 1rem;
     max-width: 80%;
 }
@@ -570,6 +577,11 @@ blockquote {
 
 blockquote > p {
     margin-top: 2rem;
+}
+
+.eq-block {
+    height: 1.625rem;
+    border-radius: 0;
 }
 
 /* blockquote:before {
