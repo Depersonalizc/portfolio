@@ -139,8 +139,8 @@
                 The obvious headache now is the in-scattering term C. (We can ignore emssion since clouds don't shine themselves.) Evaulating it
                 precisely involves taking an integral of all in-scattered light over all possible direction - but each beam of in-scattered light obeys
                 the exact same formula we are trying to solve! Instead of fighting this recursive nightmare, we make the assumption that
-                most of the in-scattered energy comes from the primary scattering path: Sun → volume → sample point. This simplifies the in-scattering 
-                down to just one integral
+                most of the in-scattered energy comes from the primary scattering path: Sun → sample point → eye. This simplifies the in-scattering term 
+                dramatically, down to just one integral
             </p>
             <img src="./assets/img/clouds/eq/eq_inscatter.svg" class="eq-block" style="height: 2rem">
             <p>This is now much more computationally tractable and it gives us a base lighting model to build upon.</p>
