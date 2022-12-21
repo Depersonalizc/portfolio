@@ -8,11 +8,6 @@ html {
     padding: 0;
 }
 
-/* ul, ol {
-  list-style: none;
-  padding: 0;
-} */
-
 :root {
     --br-lg: 1rem;
     --br-sm: 0.5rem;
